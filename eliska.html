@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliska eliskaa</title>
+    <link rel="stylesheet" href="eliska/eliska.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Will YOU be my valentine? 💘</h1>
+    
+        <div class="heart-images">
+            <img src="eliska/42B2C26A-FFE4-4948-BC47-11BA8E8D7BE5.jpeg" alt="Srdce obrázok 1" class="heart-shape">
+            <img src="eliska/unnamed.jpg" alt="Srdce obrázok 2" class="heart-shape">
+            <img src="eliska/IMG_7886.jpeg" alt="Srdce obrázok 3" class="heart-shape">
+        </div>
+        <div class="hearts">
+            <span class="heart">&#10084;&#65039;</span>
+            <span class="heart">&#10084;&#65039;</span>
+            <span class="heart">&#10084;&#65039;</span>
+        </div>
+        <div class="falling-hearts"></div>
+        <div class="buttons">
+            <a href="heart.html">
+                <input type="submit" value="ANO" class="yes-button">
+            </a>
+            <input type="submit" value="NIE" class="yes-button moving-button">
+        </div>
+
+        <p class="footer">S láskou, Tvoj <span class="name">Deniskoo</span></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const movingButton = document.querySelector(".moving-button");
+            const fallingHeartsContainer = document.querySelector(".falling-hearts");
+        
+            // Uhýbajúce sa tlačidlo
+            movingButton.addEventListener("mouseover", function () {
+                const x = Math.random() * (window.innerWidth - 200);
+                const y = Math.random() * (window.innerHeight - 100);
+                movingButton.style.position = "absolute";
+                movingButton.style.left = `${x}px`;
+                movingButton.style.top = `${y}px`;
+            });
+        
+            // Generovanie padajúcich srdiečok
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart-emoji");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // 3 až 5 sekúnd
+                fallingHeartsContainer.appendChild(heart);
+        
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000); // Odstránenie po skončení animácie
+            }
+        
+            setInterval(createHeart, 500); // Každú pol sekundu nové srdce
+        });
+        </script>
+</body>
+</html>
